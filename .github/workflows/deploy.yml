@@ -9,22 +9,9 @@ jobs:
   deploy:
     runs-on: [self-hosted, linux]  # Run this job on the Raspberry Pi self-hosted runner
 
-    env:
-      GOOGLE_APPLICATION_CREDENTIALS: /tmp/serviceAccountKey.json
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # Checkout the code from the repository
-      - name: Set up Google Cloud authentication
-        run: |
-          # Create the service account JSON file from the GitHub secret
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $GOOGLE_APPLICATION_CREDENTIALS
-          
-      - name: Debug authentication
-        run: |
-          echo $GOOGLE_APPLICATION_CREDENTIALS
-          cat $GOOGLE_APPLICATION_CREDENTIALS
-          ls -l $GOOGLE_APPLICATION_CREDENTIALS
+        uses: actions/checkout@v2  # Checkout the code from the repository        
 
       - name: Install dependencies
         run: |
@@ -32,10 +19,15 @@ jobs:
           sudo apt-get install -y python3-pip
           pip3 install -r requirements.txt  # Assuming you have a requirements.txt file
 
+      - name: Lint the code
+        run: |
+          pylint --disable=all --enable=error main.py  # Lint the code and treat warnings as errors
+
+       - name: Stop old process
+        run: |
+          pkill -f main.py || true  # Kill the old running instance of main.py if it exists
+
       - name: Run the project
         run: |
-          python3 main.py $GOOGLE_APPLICATION_CREDENTIALS  # Replace with your script to run the project
-           
-      - name: Clean up
-        run: |
-          rm $GOOGLE_APPLICATION_CREDENTIALS  # Clean up the temporary service account key file
+          python3 main.py # Replace with your script to run the project
+      

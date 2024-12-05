@@ -5,7 +5,7 @@ import sys
 
 try:
     adc = Adafruit_ADS1x15.ADS1115()
-    db = FirestoreDatabase(sys.argv[1])
+    db = FirestoreDatabase("serviceAccountKey.json")
 
     GAIN = 1
     name = 'Efeutute'
