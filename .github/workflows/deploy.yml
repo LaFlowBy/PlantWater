@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2  # Checkout the code from the repository
-
       - name: Set up Google Cloud authentication
         run: |
           # Create the service account JSON file from the GitHub secret
@@ -20,6 +19,12 @@ jobs:
           
           # Set the GOOGLE_APPLICATION_CREDENTIALS environment variable
           export GOOGLE_APPLICATION_CREDENTIALS="/tmp/serviceAccountKey.json"
+
+      - name: Debug authentication
+        run: |
+          echo $GOOGLE_APPLICATION_CREDENTIALS
+          cat $GOOGLE_APPLICATION_CREDENTIALS
+          ls -l $GOOGLE_APPLICATION_CREDENTIALS
 
       - name: Install dependencies
         run: |
