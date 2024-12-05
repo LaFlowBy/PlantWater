@@ -6,7 +6,7 @@ import Adafruit_ADS1x15
 from firestore import FirestoreDatabase
 
 try:
-    service_account_path = os.path.join(os.path.dirname(__file__), 'serviceAccountKey.json')
+    service_account_path = '~/Repos/PlantWater/serviceAccountKey.json'
     adc = Adafruit_ADS1x15.ADS1115()
     db = FirestoreDatabase(service_account_path)
 
