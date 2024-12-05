@@ -1,6 +1,4 @@
-import firebase_admin
 from firebase_admin import firestore
-from firebase_admin import credentials
 
 class FirestoreDatabase:
     def __init__(self, credentials_path=None):
