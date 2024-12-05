@@ -5,6 +5,7 @@ import Adafruit_ADS1x15
 from firestore import FirestoreDatabase
 
 try:
+    SERVICE_ACCOUNT_PATH = '~/Repos/PlantWater/serviceAccountKey.json'
     adc = Adafruit_ADS1x15.ADS1115()
     db = FirestoreDatabase(sys.argv[1] if len(sys.argv) > 1 else None)
 

@@ -9,9 +9,6 @@ jobs:
   deploy:
     runs-on: [self-hosted, linux]  # Run this job on the Raspberry Pi self-hosted runner
 
-    env:
-      GOOGLE_APPLICATION_CREDENTIALS: /tmp/serviceAccountKey.json
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2  # Checkout the code from the repository
@@ -48,4 +45,4 @@ jobs:
            
       - name: Clean up
         run: |
-          rm $GOOGLE_APPLICATION_CREDENTIALS  # Clean up the temporary service account key file
+          nohup python3 main.py &  # Run the new instance of main.py in the background
