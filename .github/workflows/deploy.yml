@@ -47,4 +47,4 @@ jobs:
            
       - name: Clean up
         run: |
-          nohup python3 main.py &  # Run the new instance of main.py in the background
+          rm $GOOGLE_APPLICATION_CREDENTIALS  # Remove the service account JSON file
