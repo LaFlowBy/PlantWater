@@ -1,10 +1,11 @@
 from firestore import FirestoreDatabase
 import Adafruit_ADS1x15
 import time
+import sys
 
 try:
     adc = Adafruit_ADS1x15.ADS1115()
-    db = FirestoreDatabase()
+    db = FirestoreDatabase(sys.argv[1])
 
     GAIN = 1
     name = 'Efeutute'
