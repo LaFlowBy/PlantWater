@@ -4,7 +4,7 @@ import time
 
 try:
     adc = Adafruit_ADS1x15.ADS1115()
-    db = FirestoreDatabase(credentials_path="serviceAccountKey.json")
+    db = FirestoreDatabase()
 
     GAIN = 1
     name = 'Efeutute'
