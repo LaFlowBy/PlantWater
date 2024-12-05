@@ -9,6 +9,9 @@ jobs:
   deploy:
     runs-on: [self-hosted, linux]  # Run this job on the Raspberry Pi self-hosted runner
 
+    env:
+      GOOGLE_APPLICATION_CREDENTIALS: /tmp/serviceAccountKey.json  # Set the environment variable for the service account JSON file
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2  # Checkout the code from the repository
