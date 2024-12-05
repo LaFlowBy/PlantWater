@@ -31,3 +31,5 @@ try:
         time.sleep(10)
 except KeyboardInterrupt:
     logging.info("Exit")
+except Exception as e:
+    logging.error("Error: %s", e)
