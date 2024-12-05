@@ -6,7 +6,8 @@ import Adafruit_ADS1x15
 from firestore import FirestoreDatabase
 
 # Configure logging to log to a file
-logging.basicConfig(filename='/home/florian/main.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='/home/florian/main.log',
+                     level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 try:
     adc = Adafruit_ADS1x15.ADS1115()
@@ -27,5 +28,3 @@ try:
         time.sleep(10)
 except KeyboardInterrupt:
     logging.info("Exit")
-except Exception as e:
-    logging.error(f"An error occurred: {e}")

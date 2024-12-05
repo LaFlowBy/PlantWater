@@ -36,7 +36,7 @@ jobs:
 
       - name: Lint the code
         run: |
-          pylint --enable=error main.py  # Lint the code and treat warnings as errors
+          pylint main.py  # Lint the code and treat warnings as errors
 
       - name: Restart script service
         run: |
