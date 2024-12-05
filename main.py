@@ -19,12 +19,12 @@ try:
     plant = db.findPlantByName(NAME)
     if plant is None:
         plant = db.addPlant(NAME, 'Succulent')
-        logging.info(f"Added new plant: {NAME}")
+        logging.info("Added new plant: %s", NAME)
 
     while True:
         data_value = adc.read_adc(3, gain=GAIN)
         db.addDataToPlant(plant, data_value)
-        logging.info(f"Data value: {data_value}")
+        logging.info("Data value: %s", data_value)
         time.sleep(10)
 except KeyboardInterrupt:
     logging.info("Exit")

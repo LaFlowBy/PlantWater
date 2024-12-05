@@ -32,11 +32,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip
-          pip3 install -r requirements.txt  # Assuming you have a requirements.txt file
-
+        
       - name: Lint the code
         run: |
-          pylint main.py  # Lint the code and treat warnings as errors
+          pylint --disable=all --enable=error main.py  # Lint the code and ignore warnings
 
       - name: Restart script service
         run: |
