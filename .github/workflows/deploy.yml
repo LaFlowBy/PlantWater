@@ -18,7 +18,7 @@ jobs:
       - name: Set up Google Cloud authentication
         run: |
           # Create the service account JSON file from the GitHub secret
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $GOOGLE_APPLICATION_CREDENTIALS
+          printf "%s" "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $GOOGLE_APPLICATION_CREDENTIALS
           
 
       - name: Debug authentication
