@@ -24,15 +24,11 @@ jobs:
       - name: Check the credentials file content
         run: |
           cat $GOOGLE_APPLICATION_CREDENTIALS
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | jq .  # Check the JSON content
-
 
       - name: Debug authentication
         run: |
-          echo $GOOGLE_APPLICATION_CREDENTIALS
-          cat $GOOGLE_APPLICATION_CREDENTIALS
-          ls -l $GOOGLE_APPLICATION_CREDENTIALS
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
+
 
       - name: Install dependencies
         run: |
