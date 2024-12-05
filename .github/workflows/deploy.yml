@@ -21,7 +21,7 @@ jobs:
           # Create the service account JSON file from the GitHub secret
           echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | sed 's/\\"/"/g' > $GOOGLE_APPLICATION_CREDENTIALS
 
-      - name: Debugging: Check the credentials file content
+      - name: Check the credentials file content
         run: |
           cat $GOOGLE_APPLICATION_CREDENTIALS
 
