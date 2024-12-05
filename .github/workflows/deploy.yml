@@ -1,0 +1,36 @@
+name: Deploy on Raspberry Pi
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux]  # Run this job on the Raspberry Pi self-hosted runner
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Checkout the code from the repository
+
+      - name: Set up Google Cloud authentication
+        run: |
+          # Create the service account JSON file from the GitHub secret
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > /tmp/serviceAccountKey.json
+          
+          # Set the GOOGLE_APPLICATION_CREDENTIALS environment variable
+          export GOOGLE_APPLICATION_CREDENTIALS="/tmp/serviceAccountKey.json"
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install -r requirements.txt  # Assuming you have a requirements.txt file
+
+      - name: Run the project
+        run: |
+          python3 main.py  # Replace with your script to run the project
+          d
+      - name: Clean up
+        run: |
+          rm /tmp/serviceAccountKey.json  # Clean up the temporary service account key file
