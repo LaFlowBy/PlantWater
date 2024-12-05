@@ -1,9 +1,9 @@
 """Main Module"""
-import sys
 import time
 import logging
 import Adafruit_ADS1x15
 from firestore import FirestoreDatabase
+import os
 
 # Configure logging to log to a file
 logging.basicConfig(filename='/home/florian/main.log',
@@ -11,8 +11,11 @@ logging.basicConfig(filename='/home/florian/main.log',
 
 try:
     adc = Adafruit_ADS1x15.ADS1115()
-    logging.info(sys.argv[1])
-    db = FirestoreDatabase(sys.argv[1] if len(sys.argv) > 1 else None)
+    # Read from environment variables
+    GOOGLE_APPLICATION_CREDENTIALS = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    
+    logging.info(GOOGLE_APPLICATION_CREDENTIALS)
+    db = FirestoreDatabase(GOOGLE_APPLICATION_CREDENTIALS)
 
     GAIN = 1
     NAME = 'Efeutute'
