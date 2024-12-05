@@ -28,8 +28,8 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-      	working-directory: src/app/angular-firebase-template
-        run: npm run build --configuration=production
+        working-directory: src/app/angular-firebase-template
+        run: npm run build --prod
 
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v2.0.0
