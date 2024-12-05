@@ -3,7 +3,6 @@ from firebase_admin import firestore
 class FirestoreDatabase:
     def __init__(self, credentials_path=None):
         # Initialize Firestore client
-        credentials_path = os.path.expanduser(credentials_path) if credentials_path else None
         self.db = firestore.Client.from_service_account_json(credentials_path) if credentials_path else firestore.Client()
         self.PLANTS_COLLECTION = 'plants'
         self.DATA_COLLECTION = 'data'
