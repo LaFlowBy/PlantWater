@@ -21,7 +21,7 @@ jobs:
 
       - name: Lint the code
         run: |
-          pylint --disable=all --enable=error main.py  # Lint the code and treat warnings as errors
+          pylint --enable=error main.py  # Lint the code and treat warnings as errors
 
       - name: Stop old process
         run: |
