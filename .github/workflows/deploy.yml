@@ -39,7 +39,7 @@ jobs:
 
       - name: Restart script service
         run: |
-          sudo systemctl restart my_script.service
+          sudo systemctl restart plantwater.service
 
       # - name: Run the project
       #   run: |
