@@ -5,7 +5,7 @@ on:
     branches:
       - main # Trigger deployment on push to the main branch
     paths:
-      - "sensor/**" # Only trigger if changes are made in the sensor folder
+      - "src/sensor/**" # Only trigger if changes are made in the sensor folder
 
 jobs:
   deploy:

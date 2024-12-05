@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "app/**" # Only trigger if changes are made in the sensor folder
+      - "src/app/**" # Only trigger if changes are made in the sensor folder
 
 jobs:
   build-and-deploy:
