@@ -19,11 +19,14 @@ jobs:
       - name: Set up Google Cloud authentication
         run: |
           # Create the service account JSON file from the GitHub secret
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | sed 's/\\"/"/g' > $GOOGLE_APPLICATION_CREDENTIALS
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | sed 's/\\n/\n/g' > $GOOGLE_APPLICATION_CREDENTIALS
 
       - name: Check the credentials file content
         run: |
           cat $GOOGLE_APPLICATION_CREDENTIALS
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" | jq .  # Check the JSON content
+
 
       - name: Debug authentication
         run: |
