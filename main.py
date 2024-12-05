@@ -12,10 +12,8 @@ logging.basicConfig(filename='/home/florian/main.log',
 try:
     adc = Adafruit_ADS1x15.ADS1115()
     # Read from environment variables
-    GOOGLE_APPLICATION_CREDENTIALS = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
     
-    logging.info(GOOGLE_APPLICATION_CREDENTIALS)
-    db = FirestoreDatabase(GOOGLE_APPLICATION_CREDENTIALS)
+    db = FirestoreDatabase("serviceAccountKey.json")
 
     GAIN = 1
     NAME = 'Efeutute'
@@ -28,7 +26,7 @@ try:
         data_value = adc.read_adc(3, gain=GAIN)
         db.addDataToPlant(plant, data_value)
         logging.info("Data value: %s", data_value)
-        time.sleep(10)
+        time.sleep(60)
 except KeyboardInterrupt:
     logging.info("Exit")
 except Exception as e:
