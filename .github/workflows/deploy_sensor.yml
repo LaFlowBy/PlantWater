@@ -3,23 +3,23 @@ name: Deploy sensor script on Raspberry Pi
 on:
   push:
     branches:
-      - main  # Trigger deployment on push to the main branch
-     paths:
-      - 'sensor/**'  # Only trigger if changes are made in the sensor folder
+      - main # Trigger deployment on push to the main branch
+    paths:
+      - "sensor/**" # Only trigger if changes are made in the sensor folder
 
 jobs:
   deploy:
-    runs-on: [self-hosted, linux]  # Run this job on the Raspberry Pi self-hosted runner
+    runs-on: [self-hosted, linux] # Run this job on the Raspberry Pi self-hosted runner
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # Checkout the code from the repository
+        uses: actions/checkout@v2 # Checkout the code from the repository
 
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip
-        
+
       - name: Lint the code
         run: |
           pylint --disable=all --enable=error src/sensor/*.py
