@@ -24,9 +24,11 @@ jobs:
         run: cd src/app/angular-firebase-template
 
       - name: Install dependencies
+        working-directory: src/app/angular-firebase-template
         run: npm install
 
       - name: Build Angular app
+      	working-directory: src/app/angular-firebase-template
         run: npm run build --configuration=production
 
       - name: Deploy to Firebase
