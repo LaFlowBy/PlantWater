@@ -1,14 +1,13 @@
 """Main Module"""
 
 import time
-import os
 import Adafruit_ADS1x15
 from firestore import FirestoreDatabase
 
 try:
-    service_account_path = '~/Repos/PlantWater/serviceAccountKey.json'
+    SERVICE_ACCOUNT_PATH = '~/Repos/PlantWater/serviceAccountKey.json'
     adc = Adafruit_ADS1x15.ADS1115()
-    db = FirestoreDatabase(service_account_path)
+    db = FirestoreDatabase(SERVICE_ACCOUNT_PATH)
 
     GAIN = 1
     NAME = 'Efeutute'
