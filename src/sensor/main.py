@@ -11,7 +11,6 @@ logging.basicConfig(filename='/home/florian/main.log',
 
 try:
     adc = Adafruit_ADS1x15.ADS1115()
-    # Read from environment variables
     
     db = FirestoreDatabase("serviceAccountKey.json")
 
