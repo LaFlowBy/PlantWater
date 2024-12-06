@@ -32,9 +32,8 @@ jobs:
         run: npm run build --prod
 
       - name: Deploy to Firebase
-        working-directory: src/app/angular-firebase-template
-        run: |
-          firebase use --add # If you need to select a Firebase project
-          firebase deploy --only hosting
+        uses: w9jds/firebase-action@v2.0.0
+        with:
+          args: deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
