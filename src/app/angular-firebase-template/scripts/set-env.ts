@@ -1,5 +1,5 @@
 // filepath: /c:/WS/PlantWater/scripts/set-env.ts
-const { writeFile } = require('fs');
+const { writeFile, existsSync, mkdirSync } = require('fs');
 const { argv } = require('yargs');
 const dotenv = require('dotenv');
 
@@ -23,9 +23,12 @@ export const environment = {
 };
 `;
   
+if(!existsSync(targetPath)){
+  mkdirSync("./src/environments/");
+}
 // Write the environment variables to the environment.ts file
 writeFile(targetPath, envConfigFile, function (err) {
-  writeFile(targetPath, envConfigFile, { flag: 'w' }, function (err) {
+  
   if (err) {
     console.log(err);
   } else {
