@@ -22,9 +22,10 @@ export const environment = {
   }
 };
 `;
-
+  
 // Write the environment variables to the environment.ts file
 writeFile(targetPath, envConfigFile, function (err) {
+  writeFile(targetPath, envConfigFile, { flag: 'w' }, function (err) {
   if (err) {
     console.log(err);
   } else {
