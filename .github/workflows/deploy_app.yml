@@ -31,6 +31,10 @@ jobs:
         working-directory: src/app/angular-firebase-template
         run: echo "PLANTWATER_FIREBASE_API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
 
+      - name: Set environment variables
+        working-directory: src/app/angular-firebase-template
+        run: node ./scripts/set-env.ts
+
       - name: Build Angular app
         working-directory: src/app/angular-firebase-template
         run: npm run build --prod
