@@ -27,6 +27,10 @@ jobs:
         working-directory: src/app/angular-firebase-template
         run: npm install
 
+      - name: Inject Firebase API Key
+        working-directory: src/app/angular-firebase-template
+        run: echo "PLANTWATER_FIREBASE_API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
+
       - name: Build Angular app
         working-directory: src/app/angular-firebase-template
         run: npm run build --prod
