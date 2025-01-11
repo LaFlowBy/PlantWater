@@ -8,6 +8,7 @@ import {
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { PlantsPageComponent } from './pages/plants-page/plants-page.component';
+import { PlantPageComponent } from './pages/plant-page/plant-page.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
@@ -28,6 +29,12 @@ export const routes: Routes = [
       {
         path: 'plants',
         component: PlantsPageComponent,
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin },
+      },
+      {
+        path: 'plants/:id',
+        component: PlantPageComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin },
       },

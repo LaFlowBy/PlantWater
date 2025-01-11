@@ -1,43 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import Fireworks from 'fireworks-js';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { PlantCardComponent } from "../../components/plant-card/plant-card.component";
+import { Plant } from '../../models/plant';
+import { PlantsService } from '../../services/plants.service';
 
 @Component({
-  selector: 'app-main-page',
-  imports: [CommonModule ],
+  imports: [CommonModule, PlantCardComponent],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
   standalone: true
 })
-export class MainPageComponent  implements OnInit, AfterViewInit{
-  
-  private fireworks!: Fireworks;
+export class MainPageComponent  implements OnInit{
+  plantService = inject(PlantsService);
 
+  public plants : Plant[] = []
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.plants = this.plantService.getPlants();
+   }
 
-  ngAfterViewInit(): void {
-    this.startFireworks();
+  plantSelected(plant: Plant) {
+    console.log(plant);
   }
 
-  startFireworks(): void {
-    const container = document.getElementById('fireworks-container');
-    if (container) {
-      this.fireworks = new Fireworks(container);
-      this.fireworks.start();
-    }
-  }
 
-  get isBirthday(): boolean {
-    const today = new Date();
-    const birthDate = new Date(2024, 12, 7);
-    return today.getTime() === birthDate.getTime();
-  }
 
   ngOnDestroy(): void {
-    if (this.fireworks) {
-      this.fireworks.stop();
-    }
+  
   }
 }

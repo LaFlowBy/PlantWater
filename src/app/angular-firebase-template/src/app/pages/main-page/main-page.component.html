@@ -1,5 +1,5 @@
-<div>
- dashboard works!
-</div>
 
-  
+<h1>Willkommen bei Plantify</h1>
+<div class="m-5 d-flex flex-wrap justify-content-center">
+ <app-plant-card *ngFor="let plant of plants" [plant]="plant" (plantSelected)="plantSelected($event)"></app-plant-card>
+</div>
