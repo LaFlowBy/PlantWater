@@ -2,3 +2,4 @@ serviceAccountKey.json
 actions-runner/
 __pycache__/
 src/app/angular-firebase-template/.env
+.DS_Store
