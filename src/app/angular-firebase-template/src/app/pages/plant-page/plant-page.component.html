@@ -1,3 +1,26 @@
-<p>plant-page works!</p>
-
-<div> {{id}}</div>
+<div class="plant-details">
+    <h1>Plant Details</h1>
+    <h2 *ngIf="plant">Plant Name: {{ plant.name }}</h2>
+    <h3 *ngIf="id">Plant ID: {{ id }}</h3>
+  
+    <table *ngIf="plant">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>{{ plant.name }}</td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>{{ plant.type }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="!plant" class="error">No data found for this plant.</p>
+  </div>

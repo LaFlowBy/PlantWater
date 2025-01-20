@@ -4,6 +4,7 @@ import { PlantCardComponent } from "../../components/plant-card/plant-card.compo
 import { Plant } from '../../models/plant';
 import { PlantsService } from '../../services/plants.service';
 
+
 @Component({
   imports: [CommonModule, PlantCardComponent],
   templateUrl: './main-page.component.html',
@@ -13,18 +14,20 @@ import { PlantsService } from '../../services/plants.service';
 export class MainPageComponent  implements OnInit{
   plantService = inject(PlantsService);
 
-  public plants : Plant[] = []
-  constructor() { }
+  plants : any[] = []
+  
+  constructor() {}
 
   ngOnInit(): void {
-    this.plants = this.plantService.getPlants();
-   }
+    this.plantService.getPlants().subscribe((data) => {
+      this.plants = data;
+      console.log('Plants:', this.plants); // Debug output
+    });
+  }
 
   plantSelected(plant: Plant) {
     console.log(plant);
   }
-
-
 
   ngOnDestroy(): void {
   
