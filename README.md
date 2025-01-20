@@ -1,5 +1,5 @@
 # PlantWater
-
+Hosted website [here](https://plantwater-f986c.web.app/)
 ## Development - Getting started
 
 1. create `.env` file in main folder of angular app `src/app/angular-firebase-template` with `PLANTWATER_FIREBASE_API_KEY=<FIREBASE_API_KEY>` (You can find API_KEY [here](https://console.firebase.google.com/project/plantwater-f986c/settings/general/web:MGM1YzFiMGUtNmE2Ny00NGI1LWIzZjUtYzM3Zjc4OGJiOWU3?hl=de))
